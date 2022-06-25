@@ -4,7 +4,7 @@ import $ from "jquery";
 import Carslist from "./components/cars_list";
 import Cars from "./components/cars";
 import data from "./dummy";
-
+import Allcars from"./components/Allcars"
 // start with my app application
 class App extends React.Component {
   constructor(props) {
@@ -69,8 +69,12 @@ class App extends React.Component {
           <div>
             <Cars />
           </div>
-        </div>
+         
+      </div><br></br>
+      <div className="all">
+         <Allcars data={data}/>
       </div>
+    </div>
     );
   }
 }
