@@ -1,0 +1,49 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.header{
+  
+    height: 10vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #e9e9eb;
+
+}
+h1{
+  padding-top: 1%;
+  
+  position: absolute;
+  left: 2%;
+  top: 30px;
+  font-size: 40px;
+  z-index: 999;
+  font-weight: bold;
+  color: #083b74f7;
+}
+h1 span{
+  color: orangered;
+}
+.nav {
+  background-color: #5992cc;
+  margin: 0px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Francois One";
+  list-style: none;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    margin: 0 45px;
+}
+.vav :hover{
+  color: #f01d09;
+}
