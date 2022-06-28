@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
-import $ from "jquery";
-import Carslist from "./components/cars_list";
+
 import Cars from "./components/cars";
 import data from "./dummy";
 import Allcars from"./components/Allcars"
@@ -16,17 +15,12 @@ class App extends React.Component {
   }
   //function to add cars from data base
   componentDidMount() {
-    $.ajax({
-      url: "localhost:1128",
-      type: "GET",
-      success: (data) => {
-        this.setState({
-          data: data,
-          view: "carslist",
-        });
-      },
-      error: console.error(),
-    });
+    axios.get("http://localhost:1128").then(data =>{
+    console.log(data)
+    this.setState({
+      data:data
+    })
+    })
   }
 
   changeView(view) {
@@ -36,7 +30,7 @@ class App extends React.Component {
   }
   renderView() {
     if (this.state.view === "carslist") {
-      return <Carslist changeView={this.changeView}/>;
+      return 
     } else if (this.state.view === "car") {
       return (
         <div>
@@ -64,7 +58,6 @@ class App extends React.Component {
               this.changeView("carslist");
             }}
           >
-            <Carslist />
           </div>
           <div>
             <Cars />
