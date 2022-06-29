@@ -2,8 +2,10 @@
 const express=require('express');
 const app=express()
 const data=require('./data/mongo')
+var cors = require('cors')
 
 app.use(express.json())
+app.use(cors()) // Use this after the variable declaration
 
 
 
@@ -12,7 +14,7 @@ app.use(express.json())
 let PORT = 1128
 
 //to get all data from the database
-app.get('/get',function(req,res){
+app.get('/gett',function(req,res){
 
     data.getCars((err,result)=>{
         if(err) res.sendStatus(500)

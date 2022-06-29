@@ -18,16 +18,17 @@ class App extends React.Component {
     this.createCar = this.createCar.bind(this);
     this.getOneCar = this.getOneCar.bind(this);
     this.delCar = this.delCar.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
   //function to add cars from data base
   componentDidMount() {
     $.ajax({
-      url: "localhost:1128",
+      url: "http://localhost:1128/gett",
       type: "GET",
       success: (data) => {
         this.setState({
           data: data,
-          view: "carslist",
         });
       },
       error: console.error(),
@@ -48,7 +49,7 @@ class App extends React.Component {
   }
 
   delCar(index) {
-    axios.post("http://localhost:1128/:_d", this.state.data[index]);
+    axios.post("http://localhost:1128/:id", this.state.data[index]);
   }
 
   changeView(view) {
@@ -60,7 +61,8 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     axios.post("/add", this.state).then(() => {
-      this.componentDidMount();
+      // this.componentDidMount();
+      console.log("test");
     });
   }
 
@@ -111,7 +113,7 @@ class App extends React.Component {
         <br></br>
 
         <div className="all">
-          
+          {/* <Allcars data={data} /> */}
           {this.renderView()}
         </div>
       </div>

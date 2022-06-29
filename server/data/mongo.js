@@ -19,6 +19,7 @@ let cars = mongoose.Schema({
    car_color: String,
    price: String,
    disc: String,
+   imgUrl:String,
    availability: Boolean
 });
 

@@ -8,8 +8,10 @@ class Cars extends React.Component {
       car: "",
       car_color: "",
       disc: "",
+      imgUrl: "",
     };
-    this.handleChange=this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -17,7 +19,9 @@ class Cars extends React.Component {
       [event.target.car]: event.target.value,
     });
   }
-  
+  handleSubmit(event) {
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -25,32 +29,38 @@ class Cars extends React.Component {
         <h2 className="New">Add new car</h2>
         <form className="Form">
           <input
+            type="text"
             id="car"
-            type="text"
-            className="car"
+            className="search"
             placeholder="carName..."
-            required
             minLength="3"
             value={this.state.car}
-          /><br></br>
+          />
+          <br></br>
           <input
-            id="car_color"
             type="text"
-            className="car"
-            placeholder="car_color..."
-            required
+            id="car_color"
+            placeholder="Price..."
             minLength="3"
-            value={this.state.car}
-          /><br></br>
+            value={this.state.price}
+          />
+          <br></br>
           <textarea
+            
             id="disc"
-            className="textarea"
             placeholder="description..."
-            required
             minLength="20"
             value={this.state.disc}
-          /><br></br>
-
+          />
+          <br></br>
+          <input
+            type="url"
+            id="img"
+            name="img"
+            placeholder="URL of img car..."
+            value={this.state.imgUrl}
+          />
+          <br></br>
           <button className="btnadd">Add</button>
         </form>
       </div>
