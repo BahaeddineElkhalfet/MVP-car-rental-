@@ -19,6 +19,15 @@ app.get('/get',function(req,res){
         else res.send(result)
     })
 });
+app.get('/getone',function(req,res){
+
+    data.getOneCar((err,result)=>{
+        if(err) res.sendStatus(500)
+        else res.send(result)
+    })
+});
+
+
 
 //start with sending the data of cra to the database 
 app.post('/post',function(req,res){
@@ -27,13 +36,9 @@ data.addCar(req.body,(err,data)=>{
 });
 });
 // try to delete a car from the data base by target her id 
-app.delete('/del/:_id',function(req,res){
+app.delete('/del/id',function(req,res){
 
-    data.delCar(req.params._id,(err,data)=>
-    {
-        if (err) send(err)
-        else send({msg:"delete with sucess"},data)
-    }).then(data=>{res.send(data)})
+    data.delCar(req.body.car).then(data=>{res.send(data)})
 });
 
 app.listen(PORT, function(err){

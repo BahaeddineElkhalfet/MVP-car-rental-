@@ -49,7 +49,7 @@ let getOneCar = (name)=>{
 
 // delete an element from database 
 let delCar = (id) => {
-   car.deleteOne({ _id: id }).then(console.log("Deleted successfuly"))
+   car.deleteOne({car: id }).then(console.log("Deleted"))
    .catch(error=>{
       console.log(error);
    })
@@ -60,3 +60,4 @@ let delCar = (id) => {
 module.exports.addCar = addCar
 module.exports.getCars = getCars
 module.exports.delCar = delCar
+module.exports.getOneCar = getOneCar

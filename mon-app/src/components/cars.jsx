@@ -22,36 +22,36 @@ class Cars extends React.Component {
   render() {
     return (
       <div className="addcar">
-        <h1 className="New-car">New Car</h1>
-        <form className="New-car-Form">
+        <h2 className="New">Add new car</h2>
+        <form className="Form">
           <input
             id="car"
             type="text"
-            className="search"
+            className="car"
             placeholder="carName..."
             required
             minLength="3"
             value={this.state.car}
-          />
+          /><br></br>
           <input
             id="car_color"
             type="text"
-            className="search"
+            className="car"
             placeholder="car_color..."
             required
             minLength="3"
             value={this.state.car}
-          />
+          /><br></br>
           <textarea
             id="disc"
-            className="disc."
+            className="textarea"
             placeholder="description..."
             required
             minLength="20"
             value={this.state.disc}
-          />
+          /><br></br>
 
-          <button>Add</button>
+          <button className="btnadd">Add</button>
         </form>
       </div>
     );

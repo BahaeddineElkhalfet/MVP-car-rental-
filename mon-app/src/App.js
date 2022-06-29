@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [], //data from file or data base mongoose
-      onecar:{},
+      onecar: {},
       view: "carslist",
     };
     this.createCar = this.createCar.bind(this);
@@ -33,22 +33,22 @@ class App extends React.Component {
       error: console.error(),
     });
   }
-  
+
   createCar() {
     axios.post("/add", this.state).then(() => {
       this.componentDidMount();
     });
   }
 
-  getOneCar(index){
-        this.handleview("Onecar")
+  getOneCar(index) {
+    this.changeView("Onecar");
     this.setState({
-      oneRecipe:this.state.recipe[index]
-    })
+      oneRecipe: this.state.recipe[index],
+    });
   }
 
-  delCar(index){
-    axios.post(("http://localhost:1128/:_d"),this.state.data[index])
+  delCar(index) {
+    axios.post("http://localhost:1128/:_d", this.state.data[index]);
   }
 
   changeView(view) {
@@ -59,47 +59,60 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    axios.post("/add", this.state).then(() => {
+      this.componentDidMount();
+    });
   }
 
   renderView() {
     if (this.state.view === "carslist") {
-      return <Allcars cars={this.state.data} getone={this.getOneCar} />;
+      return <Allcars data={this.state.data} getOneCar={this.getOneCar} />;
     } else if (this.state.view === "addCar") {
-      return (
-        <div>
-          <Onecar />
-        </div>
-      );
-    } else if(this.state.view==="Onecar"){
-      <div><Onecar car={this.state.onecar}/></div>
+      return <Cars handleSubmit={this.handleSubmit} />;
+    } else if (this.state.view === "Onecar") {
+      <div>
+        <Onecar car={this.state.onecar} />
+      </div>;
     }
   }
 
   render() {
     return (
       <div>
+        <div>
         <h1 className="header">
           <span>M</span>y Car Rental
         </h1>
 
         <div className="nav">
-          <div
-            onClick={() => {
-              this.changeView("addCar");
-            }}
-           >
-            <button className="btnlist">Cars list</button>
+          <div>
+            <button
+              className="btnlist"
+              onClick={() => {
+                this.changeView("carslist");
+              }}
+            >
+              Cars list
+            </button>
           </div>
 
           <div>
-            <button className="btnadd">Add a car</button>
+            <button
+              className="btnadd"
+              onClick={() => {
+                this.changeView("addCar");
+              }}
+            >
+              Add a car
+            </button>
           </div>
         </div>
-
+        </div>
         <br></br>
 
         <div className="all">
-          <Allcars data={data} />
+          
+          {this.renderView()}
         </div>
       </div>
     );
