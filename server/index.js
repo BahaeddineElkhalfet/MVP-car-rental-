@@ -1,34 +1,35 @@
 
 const express=require('express');
 const app=express()
-const cors =require ('cors')
 const data=require('./data/mongo')
 
 app.use(express.json())
-app.use(cors())
+
+
 
 
 //set the port 
 let PORT = 1128
 
-//start with sending the data of cra to the database 
-app.post('/add',function(req,res){
-data.addCar(req.body,(err,data)=>{
- res.send(data)
-});
-});
 //to get all data from the database
-app.get('/cars',function(req,res){
+app.get('/get',function(req,res){
 
-    data.getCars((err,data)=>{
-     if(err) send(err)
-     else send(data)
-}).then(data=>{res.send(data)})
+    data.getCars((err,result)=>{
+        if(err) res.sendStatus(500)
+        else res.send(result)
+    })
+});
+
+//start with sending the data of cra to the database 
+app.post('/post',function(req,res){
+data.addCar(req.body,(err,data)=>{
+ res.send(req.body)
+});
 });
 // try to delete a car from the data base by target her id 
 app.delete('/del/:_id',function(req,res){
 
-    data.delCar(req.params.id,(err,data)=>
+    data.delCar(req.params._id,(err,data)=>
     {
         if (err) send(err)
         else send({msg:"delete with sucess"},data)

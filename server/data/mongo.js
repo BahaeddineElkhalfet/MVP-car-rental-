@@ -1,8 +1,17 @@
+const { error } = require('jquery');
 const mongoose = require('mongoose');
-
-
 mongoose.connect('mongodb://localhost/fetcher');
+
+
 let data = mongoose.connection
+data.on("error", function () {
+   console.log("mongoose connection error");
+ });
+ 
+ data.once("open", function () {
+   console.log("mongoose connected successfully");
+ });
+
 //create the schema model which describe the rented car
 let cars = mongoose.Schema({
    id: { type: Number, uniaue: true },
@@ -18,18 +27,20 @@ let car = mongoose.model('car', cars);
 
 //func to create new car
 let addCar = (data, CB) => {
-   car.create(data, (err, cars) => {
+   car.create(data, (err, result) => {
       if (err) CB(err, null)
-      else CB(null, cars)
+      else CB(null, result)
   })
 };
 
 // to check the storage 
-let getCars = (CB) => {
-   car.find({}, (err, cars) => {
-      if (err) CB(err, null)
-      else CB(null, cars)
-   })
+let getCars = (cb) => {
+      return car.find({},(err, items) =>{
+         if (err) {
+           cb(err, null);
+         } else {
+           cb(null, items);
+         }})
 };
 
 let getOneCar = (name)=>{
@@ -38,9 +49,9 @@ let getOneCar = (name)=>{
 
 // delete an element from database 
 let delCar = (id) => {
-   car.deleteOne({ _id: id }, (err, cars) => {
-      if (err) send(err)
-      else send({ msg: "delete with sucess" }, cars)
+   car.deleteOne({ _id: id }).then(console.log("Deleted successfuly"))
+   .catch(error=>{
+      console.log(error);
    })
    return getCars()
 };
