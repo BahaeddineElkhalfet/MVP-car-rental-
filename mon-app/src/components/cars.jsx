@@ -61,7 +61,7 @@ class Cars extends React.Component {
             value={this.state.imgUrl}
           />
           <br></br>
-          <button className="btnadd">Add</button>
+          <button className="btnadd" >Add</button>
         </form>
       </div>
     );

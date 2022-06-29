@@ -4,8 +4,8 @@ import Onecar from "./Onecar";
 
 const Allcars = (props) => (
   <div>
-    {props.data.map((element) => {
-      return <Onecar data={element} />;
+    {props.data.map((element,index) => {
+      return <Onecar data={element} key={index} />;
     })}
   </div>
 );

@@ -68,7 +68,8 @@ img {
 .btn{
   width:100%;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 .edit{
   background-color: #0e98d8; /* Green */
@@ -80,6 +81,7 @@ img {
   display: inline-block;
   font-size: 16px;
   cursor: grab;
+  border-radius: 10px;
 }
 .delete{
   background-color: #ee0202; /* Green */
@@ -91,6 +93,7 @@ img {
   display: inline-block;
   font-size: 16px;
   cursor: grab;
+  border-radius: 10px;
 }
 .container{
   background-color: rgba(228, 228, 228, 0.466);
@@ -227,7 +230,4 @@ textarea {
   background-color: #f8f8f8;
   font-size: 16px;
   resize: none;
-}
-.addcar{
-  background-color: white;
 }
