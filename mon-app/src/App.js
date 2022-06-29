@@ -49,14 +49,10 @@ class App extends React.Component {
     });
   }
 
-  delCar() {
+  delCar(id) {
     axios
-      .delete(`http://localhost:1128/${this.state.data[index]._id}`)
-      .then((resp) =>
-        this.setState({
-          data: resp.data,
-        })
-      );
+      .delete(`http://localhost:1128/del/${id}`)
+  
   }
 
   changeView(view) {

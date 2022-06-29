@@ -40,7 +40,9 @@ data.addCar(req.body,(err,data)=>{
 // try to delete a car from the data base by target her id 
 app.delete('/del/id',function(req,res){
 
-    data.delCar(req.body.car).then(data=>{res.send(data)})
+    data.delCar(req.params.id, () => {
+        res.send({ msg: "succ" });
+      });
 });
 
 app.listen(PORT, function(err){

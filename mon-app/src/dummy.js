@@ -42,5 +42,13 @@ let data = [
         disc:"Nice car with fullOptions, economic, 5 doors, 5hp 1.2L, Gear : manual",
         imgUrl:"https://3.bp.blogspot.com/-TSnIDBT2G_s/XKOuQJemAbI/AAAAAAAAZPM/nbM75LfSIYM9yXqFYq0-8UzwawX1Ky5sQCLcBGAs/s1600/renault-clio-noir-etoile-2019.jpg",
             availability: true},
+    {
+        id: 6,
+        car: "VW Golf 7",
+        car_color: "black",
+        price: "DT 158.46",
+        disc:"Nice car / black / with full options, economic, 5 doors, 5hp 1.2L, Gear : manual",
+        imgUrl:"https://www.automobile-magazine.fr/asset/cms/840x394/168303/config/117112/match.jpg",
+            availability: true},
 ]
 export default data
